@@ -1,4 +1,4 @@
-- hosts: [masternode]
+- hosts: masternode
   vars_files:
   - variable.yml
   
