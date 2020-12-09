@@ -1,0 +1,4 @@
+name_dir: /dd1
+master_ip: 192.168.1.13
+port_no: 9001
+destination: /dd1
