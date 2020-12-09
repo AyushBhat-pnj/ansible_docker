@@ -1,1 +1,1 @@
-COnfigure the hadoop cluster by using ansible.
+Configure the hadoop cluster by using ansible.
