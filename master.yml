@@ -1,0 +1,34 @@
+- hosts: [masternode]
+  vars_files:
+  - variable.yml
+  
+  tasks:
+  
+  - copy:
+      src: jdk-8u171-linux-x64.rpm
+      dest: "/root"
+  
+  - command:  rpm -i jdk-8u171-linux-x64.rpm
+
+  - name: installing hadoop software
+    copy: 
+      src: hadoop-1.2.1-1.x86_64.rpm
+      dest: "/root"
+  
+  - command: rpm -i  hadoop-1.2.1-1.x86_64.rpm
+
+  - template: 
+      src: hdfs-site.xml
+      dest: "/etc/hadoop/hdfs-site.xml"
+
+  - file:
+      state: directory
+      dest: "{{ directory }}"
+ 
+  - shell : "echo Y |  hadoop namenode -format"
+ 
+  - template:
+      src: core-site.xml
+      dest: "/etc/hadoop/core-site.xml"
+  
+  - shell: "hadoop-daemon.sh start namenode" 
